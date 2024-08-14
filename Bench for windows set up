@@ -1,0 +1,56 @@
+步骤 1：启用WSL
+    打开 PowerShell，以管理员身份运行。
+    执行以下命令来启用 WSL：
+    bash
+    复制代码
+    wsl --install
+    安装完成后，系统会提示重启。
+步骤 2：安装 Ubuntu
+    重启后，打开 Microsoft Store，搜索并安装 Ubuntu。
+    安装完成后，启动 Ubuntu，进行初始设置（设置用户名和密码）。
+步骤 3：更新并安装依赖
+    在 Ubuntu 中，更新包管理器：
+    bash
+    复制代码
+    sudo apt update && sudo apt upgrade -y
+    安装 Python 3、pip 和其他必要的依赖：
+    bash
+    复制代码
+    sudo apt install python3-pip python3-dev libffi-dev libssl-dev wkhtmltopdf git curl -y
+步骤 4：安装 Node.js 和 Redis
+    安装 Node.js：
+    bash
+    复制代码
+    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt install -y nodejs
+    安装 Redis：
+    bash
+    复制代码
+    sudo apt install redis-server -y
+步骤 5：安装 Bench
+    使用 pip 安装 Bench：
+    bash
+    复制代码
+    sudo pip3 install frappe-bench
+步骤 6：初始化 Frappe 框架
+    创建 Frappe 目录：
+    bash
+    复制代码
+    bench init --frappe-branch version-14 frappe-bench
+    切换到 Frappe 目录：
+    bash
+    复制代码
+    cd frappe-bench
+步骤 7：创建新的 ERPNext 站点
+    创建站点并安装 ERPNext 应用：
+    bash
+    复制代码
+    bench new-site your-site-name
+    bench get-app erpnext --branch version-14
+    bench --site your-site-name install-app erpnext
+步骤 8：启动开发服务器
+    启动开发服务器：
+    bash
+    复制代码
+    bench start
+    现在，你应该能够通过浏览器访问 http://localhost:8000 来使用ERPNext了。
